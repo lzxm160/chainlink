@@ -162,7 +162,7 @@ func TestEthTxAttempt_GetSignedTx(t *testing.T) {
 	decodedEncoded := new(bytes.Buffer)
 	require.NoError(t, gotSignedTx.EncodeRLP(decodedEncoded))
 
-	require.Equal(t, signedTx, gotSignedTx)
+	require.Equal(t, signedTx.EncodeRLP(new(bytes.Buffer)), gotSignedTx.EncodeRLP(new(bytes.Buffer)))
 	require.Equal(t, attempt.SignedRawTx, decodedEncoded.Bytes())
 }
 
